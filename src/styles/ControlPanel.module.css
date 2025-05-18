@@ -1,0 +1,126 @@
+.panel {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  width: auto;
+  height: 500px;
+  background: #23272e;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px #0008;
+  z-index: 1000;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #444;
+}
+.tab {
+  padding: 5px 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background: #23272e;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  outline: none;
+  border-radius: 6px 6px 0 0;
+  transition: background 0.2s;
+}
+.activeTab {
+  background: #33384a;
+  border-bottom: 2px solid #4fc3f7;
+}
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 22px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tableWrapper {
+  overflow: auto;
+  flex: 1;
+  /* padding: 16px; */
+}
+.tabContent {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.table {
+  width: 100%;
+  color: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 15px;
+  margin-top: 8px;
+  table-layout: auto;
+}
+.th {
+  background: #2a2e39;
+  font-weight: 700;
+  padding: 8px 6px;
+  font-size: 15px;
+  border-bottom: 2px solid #444;
+  text-align: center;
+}
+.td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #333;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 180px;
+  white-space: nowrap;
+}
+.leftTd {
+  text-align: left;
+  font-weight: 500;
+  min-width: 120px;
+  max-width: 180px;
+  white-space: normal;
+  word-break: break-word;
+}
+.centerTd {
+  text-align: center;
+  min-width: 60px;
+  max-width: 80px;
+  white-space: nowrap;
+}
+.daysTd {
+  text-align: center;
+  min-width: 90px;
+  max-width: 120px;
+  white-space: normal;
+  word-break: break-word;
+}
+.stripedRow {
+  background: #23272e;
+  transition: background 0.2s;
+}
+.altRow {
+  background: #252a33;
+  transition: background 0.2s;
+}
+.table tr:hover {
+  background: #31374a;
+}
+
+.heading {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 1px;
+}

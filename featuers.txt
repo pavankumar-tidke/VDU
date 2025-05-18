@@ -1,0 +1,101 @@
+
+As i am very big fan and inthusiasist for INDIAN-RAILWAYS, So, 
+We are going to make a advanced featured, real-life timings based, real-life logic 
+implimenting in VDU (Virtual Display Unit) for a railway station, So here are our features list:
+
+
+1. We have to make a VDU (Virtual Display Unit) for a railway station, So for that we are using the 
+   
+   mainly python library called "pyQt5", "pyQt6" and "pyQt7" for making the GUI and interaction of the VDU.
+   
+   mainly vite, HTML5 (canvas) and javascript, and libraries like konva.js or for making the GUI and interaction of the VDU.
+
+   SO VDU will contain the following features:
+   - draw a grid of 0.5 cm x 0.5 cm square box, with columns from -5 to 300 and rows from -8 to 30
+   - draw the very light lines for the grid lines in grey color, and give the numbering for the rows and columns.
+   - Background color of the VDU will be black.
+   - VDU canvas should be zoomable and scrollable.
+
+
+2. Drawing the tracks on the VDU, with the following features:
+  - Draw the tracks on the VDU based on the TRACKS_CONFIG from the tracks_config.py file, basically, there are sections of the tracks draw from starting co-ordinates and ending co-ordinates.
+  - Give the green color to the tracks sections.
+
+
+3. Drawing the stations on the VDU, with the following features:
+
+4. Drawing the signals on the VDU, with the following features:
+  - Draw the signals on the VDU based on the SIGNALS_CONFIG from the signals_config.py file, basically, there are SIGNALS_CONFIG file and, which contains the signals and their start co-ordinates and ending co-ordinates, their direction (left, right, up, down), their aspect (red, yellow, green), their signal_id, etc.
+
+
+5. Control panel for the VDU, with the following features:
+  - Give small button somewhere in the corner of the VDU, which will be used to open the control panel.
+  - Control panel will be a separate window, which will be used to control the VDU.
+  - Control panel will have the following features:
+    - Add a new tab called "Train Schedule" in the control panel, and load the train schedule from the train_schedule.json file.
+  
+6. Automatic train movement at the station, with the following features:
+  - Train schedule contains information about train's arrival timing (HH:MM:SS), wait timing on station (seconds),  departure timing (HH:MM:SS), type of train (passenger, goods), entry_section (T-A1, T-227 and T-246), default_exit_section (T-A2 (departure to left side of VDU), T-191 and T-233 (departure to right side of VDU))(can be dynamically decide by system), train number, train name, etc.
+  - There are seperate sections (platforms) pre-decided for the types of trains like passenger and goods, take look at routes.py file PLATFORMS.
+  - There are pre-decided routes (combination of consitive sections means route) also in the routes.py file created (best, possible and available route for arrival and departure trains, from and towarws to entry section and exit section ).
+
+  - Train design:
+    - Train will be represented by a rectangle, which will be drawn on the VDU.
+    - The train number will be Displayed at the center of the train (rectangle).
+    - After hovering the mouse on the train, the train's other details will be displayed like train number, train name, train type, train route, train current position, train current speed, train current direction, train current status, etc. in the tooltip.
+    - The color of the tooltip's background will be gray.
+    - Train has a speed from 0 to 100 km/h adjust it witl our scale.
+    - There will be train speed indicator, which will be displayed at the top of the train, In the small font in the green color.
+
+  - Automatic train arrival movewment features: 
+    - At the time of train arrival timing, train should be shown at the entry section and wait for route locking, platform locking and assigning the platform number to the train.
+    - System trigger that the train is arrived at the outer section/s of the station.
+    - System then look for the available platform for the train, once the available platform is found, assign the found platform to the train. 
+    - System will Then select the best possible available route (set of sections) which is going till that assigned platform for the train. 
+    - System will select the route and lock the route and platform for the train (route (set of sections) selecting and locking should be highlighted in the VDU with the orange color).
+    - System will llook for the signals and protected sections which is going to be crossed by the train through the locked/occoupied route.
+    - System will ensure that route is locked/occoupied, then system will change the aspects for all signals to yellow/green which is going to be crossed by the train in that route.
+    - System will increase the speed gradgually and move the train from the entry section to the assigned platform, through the assigned route smoothly.
+    - System will monitor that While moving the train, if the signal aspect is yellow then train speed is 1-30 kmph, if the signal aspect is green then train speed is 30-60 kmph.
+    - System will monitor the signals when the train is moving and when the train is at the signal's protected section, system will change the aspect of the signal to red (It will indicate that train is crossed the protected section and signal is now crossed).
+    - As the train is moving one-by-one section, system will monitor and unlocked the crossed sections from the locked/occoupied route.
+    - System will monitor the train's position and when train reaches to the assigned platform, system will be unlocked the assigned route. (Assigned Platform to the train should be still assigned as the train is on the platform section, platform section still be occoupied ).
+    - Showing that the train is standing on the platform.
+    - System will monotior the arrived train's wait_time (in seconds).
+    - As the train's wait_time is over, the train color is changed to the light blue color.
+  
+  - Automatic train departure process:
+    - Departure process will be started, for the departure, first check the direction of the train, then look for the possible available (unoccoupied) route from the POSSIBLE_ROUTES in the routes.py file. 
+    - Select the route for that train from which platform is standing to the from where that train should exit section (Not a signle section should nbe occoupied by other trains).
+    - System will check that the selected route for that train is not occoupied by other trains, if no route is available, then the train will be waiting on the platform for the route to be free.
+    - If the route is available, then lock the route for that train, 
+    - Once the route is locked the other train cannot lock the same route.
+    - System will analyse the signals which are going to be crossed by the train through the locked route, while departuring.
+    - System will now change the signals through the locked route to yellow/green aspect, so that train should be able to depart and move.
+    - System will now move the train from the platform to the exit section, through the locked route smoothly animation.
+    - gradgually increase the speed of the train,
+    - As the train is moving one-by-one section, system will monitor and unlocked the crossed sections from the locked/occoupied route.
+    - System will monitor the train's position and as the train passes the signals, system will change the aspect of the signals to red, and unlock the previous section.
+
+  - This all automation process for every train which is arriving from any entry section and every departure sections
+  
+
+
+
+
+
+
+
+
+
+
+
+*THis is my project, and I want to do this using HTML5 (canvas), konva.js and javascript, and libraries like konva.js or for making the GUI and interaction of the VDU. *
+My data is looks like this I have provided files to you. (just take the JSON data from the python files) routes.py, train_schedule.json, track_config.json, signals_config.json.
+
+so you have to build this project from scratch step by step, not all at once when you are ready tell me I will give you step by step instructions and you have to impliment it.
+
+
+
+
+"This is my project, and I want to do with ai agents, so mainly here the decision making ai agents is required, so can you tell me and guide me that would the ollama local download model cna do this or any other fully free ai models that can I use for this project"
